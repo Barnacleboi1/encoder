@@ -9,6 +9,30 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input string:");
         String input = scanner.nextLine();
+        System.out.println();
+        System.out.println("The result:");
+        String[] array = input.split(" ");
+        StringBuilder binaryInput = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            if (i % 2 == 0) {
+                if (array[i].length() == 1) {
+                    binaryInput.append("1".repeat(array[i + 1].length()));
+                } else {
+                    binaryInput.append("0".repeat(array[i + 1].length()));
+                }
+            }
+        }
+        String[] binary = binaryInput.toString().split("(?<=\\G.{" + 7 + "})");
+        StringBuilder result = new StringBuilder();
+        for (String s : binary) {
+            int decimal = Integer.parseInt(s, 2);
+            result.append((char) decimal);
+        }
+        System.out.println(result);
+        /*
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input string:");
+        String input = scanner.nextLine();
         char[] array = input.toCharArray();
         StringBuilder binaryInput = new StringBuilder();
 
@@ -40,5 +64,7 @@ public class Main {
         }
 
         System.out.println(result);
+
+         */
     }
 }
